@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { products } from 'store';
 import { useState } from 'react';
 
-function EditModal({ handleClose, pId, ...rest }) {
+function EditModal({ handleClose, show, pId }) {
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
   const [size, setSize] = useState(0.0);
@@ -39,11 +39,12 @@ function EditModal({ handleClose, pId, ...rest }) {
       size,
       quantity,
     };
-    setProductList([...productList, ...newProduct]);
+    setProductList([...productList, newProduct]);
+    handleClose();
   };
 
   return product ? (
-    <Modal {...rest} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Edit the Product</Modal.Title>
       </Modal.Header>

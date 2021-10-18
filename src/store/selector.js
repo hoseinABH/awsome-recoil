@@ -1,4 +1,4 @@
-import { selector } from 'atom';
+import { selector } from 'recoil';
 import { filterProductsValue, products } from './atom';
 
 export const filterProducts = selector({
